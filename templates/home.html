@@ -1,0 +1,66 @@
+{% extends 'base.html' %}{% block content %}
+<section class="home-showreel-hero">
+  <video class="home-showreel-video" autoplay muted loop playsinline preload="metadata" aria-hidden="true">
+    <source src="{{ url_for('static', filename='video/services-showreel.mp4') }}" type="video/mp4">
+  </video>
+  <div class="home-showreel-shade" aria-hidden="true"></div>
+  <div class="container home-showreel-container">
+    <div class="home-showreel-copy">
+      <p class="home-showreel-kicker"><span class="live-dot"></span> IDEAS, ENGINEERED FOR WHAT’S NEXT</p>
+      <h1>Make your next<br>move <span>matter.</span></h1>
+      <p class="home-showreel-description">Practical AI, standout websites, mobile apps and digital marketing—connected to real goals and built to move your business forward.</p>
+      <div class="home-showreel-actions">
+        <a class="btn btn-ai home-ai-primary" href="{{ url_for('ai') }}">Explore AI solutions <span>↗</span></a>
+        <a class="home-showreel-secondary" href="#services">See what we build <span>↓</span></a>
+      </div>
+      <div class="home-showreel-services" aria-label="Our services">
+        <span>AI solutions</span><span>Web development</span><span>Mobile apps</span><span>Digital marketing</span>
+      </div>
+      <p class="home-showreel-signature"><img src="{{ url_for('static', filename='img/ankaboot-logo.svg') }}" alt=""> A specialist AI division of OneDown Solution</p>
+    </div>
+    <span class="home-showreel-caption" aria-hidden="true">AI · SOFTWARE · DIGITAL GROWTH</span>
+  </div>
+</section>
+<div class="capabilities-strip home-ai-strip"><div class="container"><span>ONE PARTNER. MORE POSSIBILITIES.</span><b>Practical AI</b><i>✳</i><b>Web & mobile</b><i>✳</i><b>Digital marketing</b><i>✳</i><b>Custom software</b></div></div>
+<section id="services" class="section services-section">
+  <div class="container">
+    <div class="section-heading reveal">
+      <div><p class="eyebrow">01 / WHAT WE BUILD</p><h2>AI that earns its place.<br>Software that gets work done.</h2></div>
+      <p>Explore practical AI from Ankaboot.ai, alongside the websites, apps and custom software that bring your next idea to life.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-12">
+        <a class="ai-service-feature reveal" href="{{ url_for('ai') }}">
+          <div class="ai-service-feature-copy">
+            <p class="ai-service-kicker"><span class="live-dot"></span> ANKABOOT.AI / PRACTICAL AI SOLUTIONS</p>
+            <h3>Give your business<br>a smarter way to work.</h3>
+            <p>From useful AI assistants to machine learning and computer vision, we shape intelligent solutions around real business challenges.</p>
+            <div class="ai-service-tags"><span>AI assistants</span><span>Machine learning</span><span>Computer vision</span><span>Data science</span></div>
+            <span class="ai-service-link">Explore Ankaboot.ai <span>↗</span></span>
+          </div>
+          <div class="ai-service-art" aria-hidden="true">
+            <div class="ai-service-orbit ai-service-orbit-one"></div>
+            <div class="ai-service-orbit ai-service-orbit-two"></div>
+            <div class="ai-service-core">a<span>i</span></div>
+            <span class="ai-service-spark">✳</span>
+          </div>
+        </a>
+      </div>
+      {% set cards = [('02','⌘','Website development','A better first impression. A stronger digital home.','Business websites · E-commerce · WordPress · Web portals','Website development'),('03','▣','Mobile app development','Your business, right where your customers are.','Android & iOS · Cross-platform apps · Customer apps','Mobile app development'),('04','&lt;/&gt;','Custom software','Software that works the way your business does.','SaaS products · Desktop applications · APIs & integrations','Custom software'),('05','⊞','Business systems','Less manual work. More space to move forward.','CRM & ERP · POS & inventory · Booking & management systems','Business systems'),('06','↗','Digital marketing','Make it easier for the right people to find, trust and choose your business.','Digital strategy · Content · Search & social campaigns','Digital marketing')] %}
+      {% for number,icon,name,desc,tags,service in cards %}
+      <div class="col-md-6 col-xl-4">
+        <a class="service-card glass reveal" href="{{ url_for('contact', service=service) }}">
+          <div class="card-top"><span class="service-icon">{{ icon|safe }}</span><span class="card-number">{{ number }} /</span></div>
+          <h3>{{ name }}</h3><p>{{ desc }}</p>
+          <div class="card-bottom"><span>{{ tags }}</span><span class="arrow-circle">↗</span></div>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+    <p class="services-note">Have something different in mind? <a href="{{ url_for('contact') }}">Let’s figure it out together. ↗</a></p>
+  </div>
+</section>
+<section class="container ai-feature-wrap"><div class="ai-feature reveal"><div class="ai-grid-bg" aria-hidden="true"></div><div class="row align-items-center position-relative gy-4"><div class="col-lg-7"><p class="eyebrow">A SPECIALIST DIVISION OF ONEDOWN SOLUTION</p><img class="ai-logo" src="{{ url_for('static', filename='img/ankaboot-logo.svg') }}" alt="Ankaboot.ai"><h2>Make intelligence<br>part of your business.</h2><p>Purpose-built chatbots, machine learning, computer vision and data science. Meet your next unfair advantage.</p><a class="btn btn-ai" href="{{ url_for('ai') }}">Explore Ankaboot.ai <span>↗</span></a></div><div class="col-lg-5"><div class="neural-orb" aria-hidden="true"><div class="orb-ring r1"></div><div class="orb-ring r2"></div><div class="orb-ring r3"></div><div class="orb-core">a<span>i</span></div><span class="orb-label label-one">UNDERSTAND</span><span class="orb-label label-two">PREDICT</span><span class="orb-label label-three">CREATE</span></div></div></div></div></section>
+<section id="process" class="section"><div class="container"><div class="section-heading reveal"><div><p class="eyebrow">02 / HOW WE WORK</p><h2>A clear path.<br>From idea to impact.</h2></div><p>You bring the ambition. We bring a practical, collaborative approach to making it happen.</p></div><div class="row g-4 process-row">{% for n,title,text in [('01','Understand','We listen, ask the right questions and define what success looks like.'),('02','Design','We map the experience and shape a clear, usable interface.'),('03','Build','We develop in focused stages, with feedback along the way.'),('04','Launch & evolve','We test, help you go live and plan what comes next.')] %}<div class="col-sm-6 col-lg-3 reveal"><div class="process-step"><span>{{ n }}</span><h3>{{ title }}</h3><p>{{ text }}</p></div></div>{% endfor %}</div></div></section>
+<section class="container bottom-cta reveal"><div><p class="eyebrow">LET’S MAKE YOUR NEXT MOVE</p><h2>An idea is a great start.<br>Let’s build what’s next.</h2></div><a class="btn btn-primary" href="{{ url_for('contact') }}">Start a conversation <span>↗</span></a></section>
+{% endblock %}
